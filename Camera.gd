@@ -38,7 +38,7 @@ func move(direction: Vector2):
 	# Set position of wall / ceiling
 	if direction.x:
 		self.selected_wall += direction.x
-		get_node("../Wall" + str(selected_wall + 1)).position.x = target_pos.x
+		get_node("../Room").get_node("Wall" + str(selected_wall + 1)).position.x = target_pos.x
 	if direction.y:
-		get_node("../Ceiling").position.x = target_pos.x
+		get_node("../Room").get_node("Ceiling").position.x = target_pos.x
 	
