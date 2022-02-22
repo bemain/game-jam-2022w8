@@ -3,14 +3,20 @@ extends Camera2D
 enum {WALL, CEILING}
 
 onready var screensize = get_viewport().size
+onready var ceiling = get_node("../Room").get_node("Ceiling")
+var walls = []
 
 var selected_wall = 0 setget set_selected_wall
 var selected_type = WALL
 
-
 func set_selected_wall(value):
 	selected_wall = fposmod(value, 4)
 
+
+func _ready():
+	# Get walls
+	for i in range(4):
+		walls.append(get_node("../Room").get_node("Wall" + str(i + 1)))
 
 func _input(event):
 	# Block movement if already moving
@@ -38,7 +44,8 @@ func move(direction: Vector2):
 	# Set position of wall / ceiling
 	if direction.x:
 		self.selected_wall += direction.x
-		get_node("../Room").get_node("Wall" + str(selected_wall + 1)).position.x = target_pos.x
+		walls[selected_wall].position.x = target_pos.x
 	if direction.y:
-		get_node("../Room").get_node("Ceiling").position.x = target_pos.x
+		ceiling.position.x = target_pos.x
+		ceiling.rotation = selected_wall * PI / 2
 	
