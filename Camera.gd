@@ -2,7 +2,7 @@ extends Camera2D
 
 enum {WALL, CEILING}
 
-onready var screensize = get_viewport().size
+onready var viewsize = get_viewport().size
 onready var ceiling = get_node("../Room").get_node("Ceiling")
 var walls = []
 
@@ -36,10 +36,15 @@ func _input(event):
 				selected_type = WALL
 				move(Vector2.DOWN)
 
+func _process(delta):
+	# If moving, apply perspective to the walls
+	if (position - get_camera_screen_center()).length() > 10:
+		apply_perspective()
+
 
 func move(direction: Vector2):
 	# Move
-	var target_pos = position + screensize * direction
+	var target_pos = position + viewsize * direction
 	position = target_pos
 	# Set position of wall / ceiling
 	if direction.x:
@@ -49,3 +54,14 @@ func move(direction: Vector2):
 		ceiling.position.x = target_pos.x
 		ceiling.rotation = selected_wall * PI / 2
 	
+
+func apply_perspective():
+	# Walls
+	for wall in walls:
+		var rel_pos = (get_camera_screen_center() - wall.position) / viewsize
+		if -2 < rel_pos.x and rel_pos.x < 2:
+			wall.material.set_shader_param("position", rel_pos)
+	
+	# Ceiling
+	var rel_pos = (get_camera_screen_center() - ceiling.position) / viewsize
+	ceiling.material.set_shader_param("position", rel_pos.rotated(-ceiling.rotation))

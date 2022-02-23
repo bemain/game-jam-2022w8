@@ -20,7 +20,6 @@ render_target_update_mode = 3
 [node name="Camera" type="Camera2D" parent="ViewportContainer/Viewport"]
 current = true
 smoothing_enabled = true
-smoothing_speed = 10.0
 script = ExtResource( 1 )
 
 [node name="Room" parent="ViewportContainer/Viewport" instance=ExtResource( 2 )]
