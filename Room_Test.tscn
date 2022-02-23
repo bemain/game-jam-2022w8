@@ -5,23 +5,23 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
-shader_param/position = Vector2( 1, 0 )
+shader_param/position = Vector2( 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 3 )
-shader_param/position = Vector2( 1, 0 )
+shader_param/position = Vector2( 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 3 )
-shader_param/position = Vector2( 1, 0 )
+shader_param/position = Vector2( 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 3 )
-shader_param/position = Vector2( 1, 0 )
+shader_param/position = Vector2( 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 3 )
-shader_param/position = Vector2( 1, 0 )
+shader_param/position = Vector2( 0, 0 )
 
 [node name="Room_Test" type="Node2D"]
 

@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform vec2 position = vec2(1, 0);
+uniform vec2 position = vec2(0, 0);
 
 void fragment() {
 	// How much should the position affect the perspective, higher -> more perspective on lower position
