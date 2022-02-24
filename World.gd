@@ -4,6 +4,13 @@ extends Spatial
 onready var room = create_room()
 
 
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	for surface in room.get_children():
+		surface.get_node("Viewport").unhandled_input(event)
+
 func create_room():
 	var room2d = $Room
 	var room3d = Spatial.new()
