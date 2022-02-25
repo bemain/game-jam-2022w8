@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="PlaneShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+
+[sub_resource type="PlaneMesh" id=2]
+resource_local_to_scene = true
+material = SubResource( 3 )
+
+[node name="Surface" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Viewport" type="Viewport" parent="."]

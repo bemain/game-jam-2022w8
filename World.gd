@@ -2,14 +2,12 @@ extends Spatial
 
 
 onready var room = create_room()
+var Surface3d = preload("res://Surface.tscn")
+
 
 
 func _ready():
 	set_process_input(true)
-
-func _input(event):
-	for surface in room.get_children():
-		surface.get_node("Viewport").unhandled_input(event)
 
 func create_room():
 	var room2d = $Room
@@ -39,32 +37,25 @@ func create_room():
 
 
 func create_3d_object(surface):
+	# Configure surface
 	surface.get_parent().remove_child(surface)
 	surface.position = Constants.wallsize / 2 if surface.centered else Vector2.ZERO
 	surface.visible = true
-	# Create viewport
-	var viewport = Viewport.new()
-	viewport.name = "Viewport"
+	# Create Surface3d
+	var surface3d = Surface3d.instance()
+	# Configure viewport
+	var viewport = surface3d.get_node("Viewport")
 	viewport.size = Constants.wallsize
 	viewport.set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
 	viewport.physics_object_picking = true
 	viewport.add_child(surface)
-	# Create mesh
-	var mesh_instance = MeshInstance.new()
-	var plane_mesh = PlaneMesh.new()
-	var material = SpatialMaterial.new()
-	material.albedo_texture = viewport.get_texture()
-	plane_mesh.size = viewport.size / viewport.size.x
-	plane_mesh.material = material
-	mesh_instance.name = "MeshInstance"
-	mesh_instance.mesh = plane_mesh
-	# Create StaticBody
-	var static_body = StaticBody.new()
-	var collision_shape = CollisionShape.new()
-	collision_shape.name = "CollisionShape"
-	collision_shape.shape = plane_mesh.create_trimesh_shape()
-	static_body.add_child(collision_shape)
-	static_body.add_child(viewport)
-	static_body.add_child(mesh_instance)
+	# Configure MeshInstnace
+	var mesh_instance = surface3d.get_node("MeshInstance")
+	mesh_instance.mesh.material.albedo_texture = viewport.get_texture()
+	mesh_instance.mesh.size = viewport.size / viewport.size.y
+	# Configure CollisionShape
+	var collision_shape = surface3d.get_node("CollisionShape")
+	collision_shape.shape = mesh_instance.mesh.create_trimesh_shape()
 	
-	return static_body
+	return surface3d
+
