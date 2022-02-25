@@ -26,6 +26,6 @@ func _input(event):
 func _process(delta):
 	var target_rotation = Vector3.ZERO
 	target_rotation.x = PI / 2 if selected_type == CEILING else 0.0
-	target_rotation.y = selected_wall * -PI / 2
+	target_rotation.y = selected_wall * -PI / 2 + PI
 	
 	rotation = lerp(rotation, target_rotation, rotate_speed)
