@@ -17,20 +17,20 @@ func create_room():
 	room3d.name = "Room"
 	# Generate walls
 	for i in range(4):
-		var mesh_instance = create_mesh(room2d.get_node("Wall" + str(i + 1)))
-		mesh_instance.name = "Wall" + str(i + 1)
+		var static_body = create_3d_object(room2d.get_node("Wall" + str(i + 1)))
+		static_body.name = "Wall" + str(i + 1)
 		# Position the mesh
-		mesh_instance.rotate(Vector3(1, 0, 0), -PI / 2)
-		mesh_instance.rotate(Vector3(0, 1, 0), i * PI / 2)
-		mesh_instance.translation = Vector3(0, 0, 0.5).rotated(Vector3(0, 1, 0), i * PI / 2)
-		room3d.add_child(mesh_instance)
+		static_body.rotate(Vector3(1, 0, 0), -PI / 2)
+		static_body.rotate(Vector3(0, 1, 0), i * PI / 2)
+		static_body.translation = Vector3(0, 0, 0.5).rotated(Vector3(0, 1, 0), i * PI / 2)
+		room3d.add_child(static_body)
 	# Generate ceilings
-	var mesh_instance = create_mesh(room2d.get_node("Ceiling"))
-	mesh_instance.name = "Ceiling"
+	var static_body = create_3d_object(room2d.get_node("Ceiling"))
+	static_body.name = "Ceiling"
 	# Position the mesh
-	mesh_instance.rotate(Vector3(1, 0, 0), PI)
-	mesh_instance.translation = Vector3(0, 0.5, 0)
-	room3d.add_child(mesh_instance)
+	static_body.rotate(Vector3(1, 0, 0), PI)
+	static_body.translation = Vector3(0, 0.5, 0)
+	room3d.add_child(static_body)
 	
 	remove_child(room2d)
 	
@@ -38,7 +38,7 @@ func create_room():
 	return room3d
 
 
-func create_mesh(surface):
+func create_3d_object(surface):
 	surface.get_parent().remove_child(surface)
 	surface.position = Constants.wallsize / 2 if surface.centered else Vector2.ZERO
 	surface.visible = true
@@ -56,6 +56,15 @@ func create_mesh(surface):
 	material.albedo_texture = viewport.get_texture()
 	plane_mesh.size = viewport.size / viewport.size.x
 	plane_mesh.material = material
+	mesh_instance.name = "MeshInstance"
 	mesh_instance.mesh = plane_mesh
-	mesh_instance.add_child(viewport)
-	return mesh_instance
+	# Create StaticBody
+	var static_body = StaticBody.new()
+	var collision_shape = CollisionShape.new()
+	collision_shape.name = "CollisionShape"
+	collision_shape.shape = plane_mesh.create_trimesh_shape()
+	static_body.add_child(collision_shape)
+	static_body.add_child(viewport)
+	static_body.add_child(mesh_instance)
+	
+	return static_body
