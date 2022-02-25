@@ -24,7 +24,6 @@ rotation = 5.96047e-08
 scale = Vector2( 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1/Wall2/Area2D"]
-position = Vector2( 0.589258, 0.589256 )
 rotation = -2.98023e-08
 shape = SubResource( 1 )
 

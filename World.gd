@@ -6,9 +6,6 @@ var Surface3d = preload("res://Surface.tscn")
 
 
 
-func _ready():
-	set_process_input(true)
-
 func create_room():
 	var room2d = $Room
 	var room3d = Spatial.new()
@@ -58,4 +55,3 @@ func create_3d_object(surface):
 	collision_shape.shape = mesh_instance.mesh.create_trimesh_shape()
 	
 	return surface3d
-
