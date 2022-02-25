@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Camera.gd" type="Script" id=1]
+[ext_resource path="res://Rooms/Room_Test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World.gd" type="Script" id=3]
+
+[node name="World" type="Spatial"]
+script = ExtResource( 3 )
+room_template = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
+current = true
+fov = 90.0
+script = ExtResource( 1 )

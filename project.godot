@@ -11,7 +11,12 @@ config_version=4
 [application]
 
 config/name="Game Jam 2022w8"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Constants="*res://Constants.gd"
 
 [physics]
 
