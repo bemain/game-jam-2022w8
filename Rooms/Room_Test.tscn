@@ -21,7 +21,6 @@ script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Wall1/Wall2"]
 rotation = 5.96047e-08
-scale = Vector2( 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1/Wall2/Area2D"]
 rotation = -2.98023e-08
