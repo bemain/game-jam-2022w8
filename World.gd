@@ -14,19 +14,23 @@ func create_room(template_packed):
 	room.name = "Room"
 	# Generate walls
 	for i in range(4):
+		# Create wall
 		var static_body = create_3d_object(template.get_node("Wall" + str(i + 1)))
 		static_body.name = "Wall" + str(i + 1)
 		# Position the mesh
-		static_body.rotate(Vector3(1, 0, 0), -PI / 2)
-		static_body.rotate(Vector3(0, 1, 0), i * -PI / 2)
+		static_body.rotation = Vector3(-PI / 2, i * -PI / 2, 0)
 		static_body.translation = Vector3(0, 0, 0.5).rotated(Vector3(0, 1, 0), i * -PI / 2)
 		room.add_child(static_body)
-	# Generate ceilings
+	# Generate ceiling
 	var static_body = create_3d_object(template.get_node("Ceiling"))
 	static_body.name = "Ceiling"
-	# Position the mesh
-	static_body.rotate(Vector3(1, 0, 0), PI)
+	static_body.rotation = Vector3(PI, 0, 0)
 	static_body.translation = Vector3(0, 0.5, 0)
+	room.add_child(static_body)
+	# Generate floor
+	static_body = create_3d_object(template.get_node("Floor"))
+	static_body.name = "Floor"
+	static_body.translation = Vector3(0, -0.5, 0)
 	room.add_child(static_body)
 	
 	add_child(room)
