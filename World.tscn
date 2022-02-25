@@ -9,7 +9,6 @@ script = ExtResource( 3 )
 room_template = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 current = true
 fov = 90.0
 script = ExtResource( 1 )
