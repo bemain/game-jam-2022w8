@@ -8,5 +8,4 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
 		Gamestate.items.append(item_name)
-		print(Gamestate.items)
 		queue_free()
