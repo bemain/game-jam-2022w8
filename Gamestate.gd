@@ -1,4 +1,4 @@
 extends Node
 
-export(Array, int) var items
-export(int) var selected_item
+export(Array, String) var items
+export(String) var selected_item
