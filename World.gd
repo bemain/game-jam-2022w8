@@ -18,8 +18,8 @@ func create_room(template_packed):
 		static_body.name = "Wall" + str(i + 1)
 		# Position the mesh
 		static_body.rotate(Vector3(1, 0, 0), -PI / 2)
-		static_body.rotate(Vector3(0, 1, 0), i * PI / 2)
-		static_body.translation = Vector3(0, 0, 0.5).rotated(Vector3(0, 1, 0), i * PI / 2)
+		static_body.rotate(Vector3(0, 1, 0), i * -PI / 2)
+		static_body.translation = Vector3(0, 0, 0.5).rotated(Vector3(0, 1, 0), i * -PI / 2)
 		room.add_child(static_body)
 	# Generate ceilings
 	var static_body = create_3d_object(template.get_node("Ceiling"))
