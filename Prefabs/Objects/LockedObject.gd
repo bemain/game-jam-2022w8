@@ -14,8 +14,13 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
-		# Focus on this object
-		Gamestate.focused_object = object_name
+		# If object already focused, do nothing
+		if Gamestate.focused_object == object_name:
+			return
+			
+		yield(get_tree(),"idle_frame")  # Wait one frame before focusing to let input pass to children first
+										# Otherwise, subobjects can be clicked while this object is not focused
+		Gamestate.focused_object = object_name  # Focus on this object
 
 
 func _on_KeyHole_Area2D_input_event(viewport, event, shape_idx):
