@@ -11,25 +11,29 @@ var _target_pos
 
 func set_selected_wall(value):
 	selected_wall = fposmod(value, 4)
-	on_wall_changed()
+	$AnimationPlayer.play("Fade")
 
 func set_selected_type(value):
 	selected_type = value
-	on_wall_changed()
+	$AnimationPlayer.play("Fade")
 
 
 func _input(event):
-	if selected_type == WALL and not Gamestate.focused_object:
-		if event.is_action_pressed("ui_right"):
-			self.selected_wall += 1
-		if event.is_action_pressed("ui_left"):
-			self.selected_wall -= 1
-		if event.is_action_pressed("ui_up"):
-			self.selected_type = CEILING
-	
-	if event.is_action_pressed("ui_down"):
-		self.selected_type = WALL
-		Gamestate.focused_object = null
+	match selected_type:
+		WALL:
+			if not Gamestate.focused_object:
+				if event.is_action_pressed("ui_right"):
+					self.selected_wall += 1
+				if event.is_action_pressed("ui_left"):
+					self.selected_wall -= 1
+				if event.is_action_pressed("ui_up"):
+					self.selected_type = CEILING
+			if event.is_action_pressed("ui_down"):
+				Gamestate.focused_object = null
+		
+		CEILING:
+			if event.is_action_pressed("ui_down"):
+				self.selected_type = WALL
 
 
 func _process(delta):
@@ -42,7 +46,6 @@ func _process(delta):
 	# Interpolate towards target
 	offset = lerp(offset, target_offset, focus_speed)
 	zoom = lerp(zoom, target_zoom, focus_speed)
-	
 
 
 func on_wall_changed():
