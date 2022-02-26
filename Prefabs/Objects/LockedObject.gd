@@ -14,6 +14,14 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
-		# Check if correct item is used
-		if Gamestate.selected_item == key:
+		# Focus on this object
+		Gamestate.focused_object = object_name
+
+
+func _on_KeyHole_Area2D_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton \
+	and event.button_index == BUTTON_LEFT \
+	and event.pressed:
+		# Check if correct item is used and object is focused
+		if Gamestate.focused_object == object_name and Gamestate.selected_item == key:
 			queue_free()
