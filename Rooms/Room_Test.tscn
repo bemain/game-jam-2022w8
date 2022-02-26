@@ -41,6 +41,7 @@ __meta__ = {
 [node name="LockedObject" parent="Wall3" instance=ExtResource( 3 )]
 position = Vector2( -4.5, -14.1875 )
 scale = Vector2( 0.2, 0.2 )
+object_name = "Drawer1"
 key = "Key1"
 
 [node name="Wall4" type="Sprite" parent="."]
