@@ -29,7 +29,6 @@ func _input(event):
 
 
 func on_wall_changed():
-	print(selected_wall)
 	match selected_type:
 		WALL:
 			position = Vector2(selected_wall * Constants.wallsize.x, 0)
