@@ -7,15 +7,17 @@ export(float) var focus_speed = 0.2
 var selected_wall: int = 0 setget set_selected_wall
 var selected_type = WALL setget set_selected_type
 
+onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
+
 var _target_pos
 
 func set_selected_wall(value):
 	selected_wall = fposmod(value, 4)
-	$AnimationPlayer.play("Fade")
+	animation_player.play("Fade")
 
 func set_selected_type(value):
 	selected_type = value
-	$AnimationPlayer.play("Fade")
+	animation_player.play("Fade")
 
 
 func _input(event):

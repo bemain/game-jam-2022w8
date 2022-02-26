@@ -1,14 +1,12 @@
 extends Control
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export(Array, String) var invContents = []
 
 var hideTimer = -1
 var shown :bool = true
 
-export(Array, String) var invContents = []
+onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,18 +24,16 @@ func _process(delta):
 			hideTimer = -1
 			
 func _input(event):
-	if event is InputEventKey and event.is_pressed() and not event.is_echo():
-		print("key", event.scancode)
-		if event.scancode == KEY_I:
-			print("i")
-			toggle()
+	if event.is_action_pressed("toggle_inventory"):
+		toggle()
+
 
 func show():
-	get_node("InventoryAnimator").play_backwards("in-out")
+	animation_player.play_backwards("Toggle Inventory")
 	shown = true
 	
 func hide():
-	get_node("InventoryAnimator").play("in-out")
+	animation_player.play("Toggle Inventory")
 	shown = false
 
 func toggle():
