@@ -17,13 +17,12 @@ __meta__ = {
 }
 
 [node name="GrabableItem" parent="Wall1" instance=ExtResource( 2 )]
-position = Vector2( -13.1875, 13.875 )
 scale = Vector2( 0.5, 0.2 )
 item_name = "Key1"
 
 [node name="Wall2" type="Sprite" parent="."]
 modulate = Color( 1, 0.027451, 0.027451, 1 )
-position = Vector2( 1024, 0 )
+position = Vector2( 1920, 0 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -32,7 +31,7 @@ __meta__ = {
 
 [node name="Wall3" type="Sprite" parent="."]
 self_modulate = Color( 0.141176, 0.921569, 0.027451, 1 )
-position = Vector2( 2048, 0 )
+position = Vector2( 3840, 0 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -46,7 +45,7 @@ key = "Key1"
 
 [node name="Wall4" type="Sprite" parent="."]
 modulate = Color( 0.972549, 0, 0.776471, 1 )
-position = Vector2( 3072, 0 )
+position = Vector2( 5760, 0 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -55,13 +54,16 @@ __meta__ = {
 
 [node name="Ceiling" type="Sprite" parent="."]
 modulate = Color( 0.972549, 0.478431, 0, 1 )
-position = Vector2( -1, -1023 )
+position = Vector2( 0, -1080 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Floor" type="Sprite" parent="."]
 modulate = Color( 0.972549, 0.933333, 0, 1 )
-position = Vector2( 0, 1024 )
+position = Vector2( 0, 1080 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 __meta__ = {
