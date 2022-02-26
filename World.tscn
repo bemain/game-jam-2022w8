@@ -6,7 +6,6 @@
 [node name="World" type="Node2D"]
 
 [node name="Room_Test" parent="." instance=ExtResource( 1 )]
-script = null
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
