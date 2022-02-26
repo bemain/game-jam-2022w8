@@ -8,9 +8,10 @@ func _on_Surface_input_event(camera, event, position, normal, shape_idx):
 	and event.pressed:
 		var new_pos = position.rotated(Vector3(1, 0, 0), rotation.x)  # Apply rotations to get position relative to wall
 		new_pos = -position.rotated(Vector3(0, 1, 0), -rotation.y)
-		new_pos += Vector3.ONE / 2  # Map from [-0.5, 0.5] to [0.0, 1.0]
-		new_pos *= Constants.wallsize.y  # Map from [0.0, 1.0] to [0.0, Constants.wallsize]
+		var new_pos_2d = Vector2(new_pos.x, new_pos.y)
+		new_pos_2d += (Constants.wallsize / Constants.wallsize.y) / 2  # Map from [-0.5, 0.5] to [0.0, 1.0]
+		new_pos_2d *= Constants.wallsize.y  # Map from [0.0, 1.0] to [0.0, Constants.wallsize]
 		
-		event.position = Vector2(new_pos.x, new_pos.y)  # Set new position
+		event.position = new_pos_2d  # Set new position
 		$Viewport.unhandled_input(event)  # Forward event to Viewport
 
