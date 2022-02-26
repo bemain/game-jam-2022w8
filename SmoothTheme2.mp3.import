@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SmoothTheme2.mp3-e4085978f63ae3458b77ee16358d31c6.mp3str"
+
+[deps]
+
+source_file="res://SmoothTheme2.mp3"
+dest_files=[ "res://.import/SmoothTheme2.mp3-e4085978f63ae3458b77ee16358d31c6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
