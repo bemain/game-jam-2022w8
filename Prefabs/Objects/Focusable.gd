@@ -3,7 +3,7 @@ class_name Focusable
 
 signal focused
 
-export(float) var focus_zoom = 2
+export(float) var focus_zoom = 4
 
 var is_focused setget , get_is_focused
 
