@@ -18,3 +18,7 @@ export(String) var focused_object
 func set_current_day(value):
 	current_day = value
 	emit_signal("current_day_changed", value)
+
+func add_to_inventory(value):
+	inventory_items.append(value)
+	emit_signal("inventory_changed")
