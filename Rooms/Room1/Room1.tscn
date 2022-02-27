@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Images/Wall1.png" type="Texture" id=1]
+[ext_resource path="res://Rooms/Room1/Lock1.tscn" type="PackedScene" id=2]
 
 [node name="Room1" type="Node2D"]
 
 [node name="Wall1" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+
+[node name="Lock1" parent="Wall1" instance=ExtResource( 2 )]
+position = Vector2( 1373, 567 )
 
 [node name="Wall2" type="Sprite" parent="."]
 self_modulate = Color( 0.741176, 0.0823529, 0.0823529, 1 )
