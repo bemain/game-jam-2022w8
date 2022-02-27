@@ -1,41 +1,26 @@
 extends Camera2D
 
-enum {WALL, CEILING}
 
 export(float) var focus_speed = 0.2
 
 var selected_wall: int = 0 setget set_selected_wall
-var selected_type = WALL setget set_selected_type
 
 onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
-
 var _target_pos
+
 
 func set_selected_wall(value):
 	selected_wall = fposmod(value, 4)
 	animation_player.play("Fade")
 
-func set_selected_type(value):
-	selected_type = value
-	animation_player.play("Fade")
-
-
 func _input(event):
-	match selected_type:
-		WALL:
-			if not Gamestate.focused_object:
-				if event.is_action_pressed("ui_right"):
-					self.selected_wall += 1
-				if event.is_action_pressed("ui_left"):
-					self.selected_wall -= 1
-				if event.is_action_pressed("ui_up"):
-					self.selected_type = CEILING
-			if event.is_action_pressed("ui_down"):
-				Gamestate.focused_object = null
-		
-		CEILING:
-			if event.is_action_pressed("ui_down"):
-				self.selected_type = WALL
+	if not Gamestate.focused_object:  # Block movement if focused
+		if event.is_action_pressed("ui_right"):
+			self.selected_wall += 1
+		if event.is_action_pressed("ui_left"):
+			self.selected_wall -= 1
+	if event.is_action_pressed("ui_down"):
+		Gamestate.focused_object = null
 
 
 func _process(delta):
@@ -51,8 +36,4 @@ func _process(delta):
 
 
 func on_wall_changed():
-	match selected_type:
-		WALL:
-			position = Vector2(selected_wall * Constants.wallsize.x, 0) + Constants.wallsize / 2
-		CEILING:
-			position = Vector2(0, Constants.wallsize.y) + Constants.wallsize / 2
+	position = Vector2(selected_wall * Constants.wallsize.x, 0) + Constants.wallsize / 2  # Update position
