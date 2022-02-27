@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1.93187, 1 ),
 "update": 0,
-"values": [ 960, 1080 ]
+"values": [ 960, 1200 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Inventory:margin_left")
@@ -62,7 +62,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1.93187, 1 ),
 "update": 0,
-"values": [ 840, 960 ]
+"values": [ 840, 1080 ]
 }
 
 [node name="World" type="Node2D"]
