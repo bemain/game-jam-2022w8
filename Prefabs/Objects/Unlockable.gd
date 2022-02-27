@@ -1,5 +1,5 @@
-extends Focusable
-class_name Lock
+extends GameObject
+class_name Unlockable
 tool
 
 signal unlocked

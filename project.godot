@@ -19,15 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Prefabs/Objects/GameObject.gd"
 }, {
-"base": "Focusable",
-"class": "Lock",
+"base": "GameObject",
+"class": "Unlockable",
 "language": "GDScript",
-"path": "res://Prefabs/Objects/Lock.gd"
+"path": "res://Prefabs/Objects/Unlockable.gd"
 } ]
 _global_script_class_icons={
 "Focusable": "",
 "GameObject": "",
-"Lock": ""
+"Unlockable": ""
 }
 
 [application]
