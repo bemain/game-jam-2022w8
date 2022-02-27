@@ -40,7 +40,7 @@ func _input(event):
 
 func _process(delta):
 	var target_offset = Vector2.ZERO
-	var target_zoom = Vector2(2, 2)
+	var target_zoom = Vector2(1, 1)
 	if Gamestate.focused_object:  # Focus on focused object, if any 
 		var focused_node: Node2D = Gamestate.objects[Gamestate.focused_object]
 		target_offset = focused_node.global_position - global_position
