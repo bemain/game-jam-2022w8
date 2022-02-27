@@ -1,13 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Rooms/Room1/Lock1.gd" type="Script" id=1]
 [ext_resource path="res://Prefabs/Objects/FocusOnClick.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/Images/Lock_closed.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Images/Lock_unlocked.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Images/Lock_on_floor.png" type="Texture" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+[ext_resource path="res://Prefabs/Objects/Unlockable.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -27,16 +25,27 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
 [node name="Lock1" type="Node2D"]
 script = ExtResource( 1 )
 object_name = "Lock1"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1, 4 )
+frames = SubResource( 2 )
+animation = "Locked"
 
 [node name="FocusOnClick" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FocusOnClick"]
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1, 4 )
-frames = SubResource( 2 )
-animation = "Locked"
+[node name="Unlockable" parent="." instance=ExtResource( 6 )]
+key = "Key1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Unlockable"]
+shape = SubResource( 1 )
+
+[connection signal="unlocked" from="Unlockable" to="." method="_on_Unlockable_unlocked"]
