@@ -11,7 +11,7 @@ onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide()
+	pass
 
 func _process(delta):
 	# Automatically hide inventory
