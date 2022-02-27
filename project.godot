@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "FocusOnClick",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/FocusOnClick.gd"
+}, {
+"base": "Node2D",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/GameObject.gd"
+} ]
+_global_script_class_icons={
+"FocusOnClick": "",
+"GameObject": ""
+}
+
 [application]
 
 config/name="Game Jam 2022w8"
