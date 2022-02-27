@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Prefabs/Objects/Unlockable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rooms/Room1/Locker1.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Images/Locker1_open.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/Lock_unlocked.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Images/Lock_on_floor.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Images/Lock_closed.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 370 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "On floor",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Unlocked",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Locked",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 32 )
+
+[node name="Locker1" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+object_name = "Locker1"
+key = "Key1"
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+visible = false
+position = Vector2( 72, -28 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Lock" parent="." index="2"]
+position = Vector2( -42, 24 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Lock" index="0"]
+position = Vector2( 1, 4 )
+frames = SubResource( 2 )
+animation = "Locked"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lock" index="1"]
+shape = SubResource( 3 )
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="opened" from="." to="." method="_on_opened"]
+[connection signal="unlocked" from="." to="." method="_on_unlocked"]

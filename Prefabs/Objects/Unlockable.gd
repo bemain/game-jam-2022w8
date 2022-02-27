@@ -1,6 +1,5 @@
-extends GameObject
+extends Focusable
 class_name Unlockable
-tool
 
 signal unlocked
 
@@ -20,10 +19,6 @@ func _on_Lock_input_event(viewport, event, shape_idx):
 			return  # If object isn't focused, return
 		
 		if Gamestate.selected_item == key:
+			yield(get_tree(),"idle_frame")  # Wait one frame before focusing to let input pass to children first
 			is_locked = false
 			emit_signal("unlocked")
-
-func _get_configuration_warning():
-	if key == "":
-		return "No key item has been set for this node, so it can't be opened."
-	return ""

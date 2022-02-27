@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Prefabs/Objects/GameObject.gd"
 }, {
-"base": "GameObject",
+"base": "Focusable",
 "class": "Unlockable",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/Unlockable.gd"
