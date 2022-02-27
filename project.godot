@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Unlockable",
 "language": "GDScript",
-"path": "res://Prefabs/Objects/Unlockable.gd"
+"path": "res://Prefabs/Objects/Lock.gd"
 } ]
 _global_script_class_icons={
 "FocusOnClick": "",
