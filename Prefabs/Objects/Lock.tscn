@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Prefabs/Objects/Lock.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Objects/Focusable.tscn" type="PackedScene" id=2]
 
-[node name="Lock" type="Area2D"]
+[node name="Lock" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="." to="." method="_on_Lock_input_event"]

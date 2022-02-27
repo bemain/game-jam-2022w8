@@ -9,25 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
-"class": "FocusOnClick",
+"base": "GameObject",
+"class": "Focusable",
 "language": "GDScript",
-"path": "res://Prefabs/Objects/FocusOnClick.gd"
+"path": "res://Prefabs/Objects/Focusable.gd"
 }, {
 "base": "Node2D",
 "class": "GameObject",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/GameObject.gd"
 }, {
-"base": "Area2D",
-"class": "Unlockable",
+"base": "Focusable",
+"class": "Lock",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/Lock.gd"
 } ]
 _global_script_class_icons={
-"FocusOnClick": "",
+"Focusable": "",
 "GameObject": "",
-"Unlockable": ""
+"Lock": ""
 }
 
 [application]
