@@ -53,6 +53,6 @@ func _process(delta):
 func on_wall_changed():
 	match selected_type:
 		WALL:
-			position = Vector2(selected_wall * Constants.wallsize.x, 0)
+			position = Vector2(selected_wall * Constants.wallsize.x, 0) + Constants.wallsize / 2
 		CEILING:
-			position = Vector2(0, Constants.wallsize.y)
+			position = Vector2(0, Constants.wallsize.y) + Constants.wallsize / 2

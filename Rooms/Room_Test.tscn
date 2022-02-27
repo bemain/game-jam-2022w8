@@ -12,11 +12,13 @@ __meta__ = {
 [node name="Wall1" type="Sprite" parent="."]
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="GrabableItem" parent="Wall1" instance=ExtResource( 2 )]
+position = Vector2( 28.625, 22.5 )
 scale = Vector2( 0.5, 0.2 )
 item_name = "Key1"
 
@@ -25,6 +27,7 @@ modulate = Color( 1, 0.027451, 0.027451, 1 )
 position = Vector2( 1920, 0 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -34,12 +37,13 @@ self_modulate = Color( 0.141176, 0.921569, 0.027451, 1 )
 position = Vector2( 3840, 0 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="LockedObject" parent="Wall3" instance=ExtResource( 3 )]
-position = Vector2( -4.5, -14.1875 )
+position = Vector2( 18.8125, 17.0625 )
 scale = Vector2( 0.2, 0.2 )
 object_name = "Drawer1"
 key = "Key1"
@@ -49,6 +53,7 @@ modulate = Color( 0.972549, 0, 0.776471, 1 )
 position = Vector2( 5760, 0 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -58,6 +63,7 @@ modulate = Color( 0.972549, 0.478431, 0, 1 )
 position = Vector2( 0, -1080 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -67,6 +73,7 @@ modulate = Color( 0.972549, 0.933333, 0, 1 )
 position = Vector2( 0, 1080 )
 scale = Vector2( 16, 16 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_edit_lock_": true
 }
