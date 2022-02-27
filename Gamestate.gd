@@ -2,6 +2,7 @@ extends Node
 
 
 signal current_day_changed
+signal inventory_changed
 
 
 export(int) var current_day = 0 setget set_current_day

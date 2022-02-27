@@ -112,6 +112,16 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
 
+[node name="Item1" type="TextureRect" parent="Inventory/Inv1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+expand = true
+stretch_mode = 6
+
 [node name="Inv2" type="TextureRect" parent="Inventory"]
 margin_left = 15.0
 margin_top = 120.0
@@ -120,6 +130,16 @@ margin_bottom = 210.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
+
+[node name="Item2" type="TextureRect" parent="Inventory/Inv2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+expand = true
+stretch_mode = 6
 
 [node name="Inv3" type="TextureRect" parent="Inventory"]
 margin_left = 15.0
@@ -133,6 +153,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Item3" type="TextureRect" parent="Inventory/Inv3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+expand = true
+stretch_mode = 6
+
 [node name="Inv4" type="TextureRect" parent="Inventory"]
 margin_left = 15.0
 margin_top = 330.0
@@ -145,6 +175,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Item4" type="TextureRect" parent="Inventory/Inv4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+expand = true
+stretch_mode = 6
+
 [node name="Inv5" type="TextureRect" parent="Inventory"]
 margin_left = 15.0
 margin_top = 435.0
@@ -156,3 +196,13 @@ stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Item5" type="TextureRect" parent="Inventory/Inv5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+expand = true
+stretch_mode = 6
