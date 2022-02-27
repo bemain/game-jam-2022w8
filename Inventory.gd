@@ -11,7 +11,9 @@ onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(KEY_1, KEY_2, KEY_4)
 	Gamestate.connect("inventory_changed", self, "update_inventory")
+
 
 func _process(delta):
 	# Automatically hide inventory
@@ -49,4 +51,6 @@ func update_inventory():
 		var inv_node = get_node("Inv%s/Item%s" % [i,i])
 		var item_texture = Gamestate.items[v].get_node("Sprite").texture
 		inv_node.texture = item_texture
-		
+
+func _toggle_select(enabled, slot):
+	print(enabled, " ", slot)
