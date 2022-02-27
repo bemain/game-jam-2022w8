@@ -46,6 +46,7 @@ func update_inventory():
 	print("inv update")
 	var i = 1
 	for v in Gamestate.inventory_items:
-		print(v)
-		#get_node("Inv%s/Item%s" % [i,i]).texture = get_node(v).texture
+		var inv_node = get_node("Inv%s/Item%s" % [i,i])
+		var item_texture = Gamestate.items[v].get_node("Sprite").texture
+		inv_node.texture = item_texture
 		
