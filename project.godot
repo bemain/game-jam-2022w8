@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "GameObject",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/GameObject.gd"
+}, {
+"base": "Area2D",
+"class": "Unlockable",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/Unlockable.gd"
 } ]
 _global_script_class_icons={
 "FocusOnClick": "",
-"GameObject": ""
+"GameObject": "",
+"Unlockable": ""
 }
 
 [application]
