@@ -10,7 +10,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Locker1" parent="Wall1" instance=ExtResource( 2 )]
-position = Vector2( 1415, 543 )
+position = Vector2( 1404, 543 )
 
 [node name="Wall2" type="Sprite" parent="."]
 self_modulate = Color( 0.741176, 0.0823529, 0.0823529, 1 )
