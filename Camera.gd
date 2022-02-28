@@ -29,7 +29,7 @@ func _process(delta):
 	var target_zoom = Vector2(1, 1)
 	if Gamestate.focused_object:  # Focus on focused object, if any 
 		var focused_node: Focusable = Gamestate.objects[Gamestate.focused_object]
-		target_offset = focused_node.global_position - global_position
+		target_offset = focused_node.focus_point.global_position - global_position
 		target_zoom /= focused_node.focus_zoom
 	# Interpolate towards target
 	offset = lerp(offset, target_offset, focus_speed)

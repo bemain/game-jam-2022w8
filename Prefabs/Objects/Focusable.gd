@@ -3,7 +3,10 @@ class_name Focusable
 
 signal focused
 
+export(NodePath) var _focus_point_path = @"FocusPoint"
 export(float) var focus_zoom = 4
+
+onready var focus_point = get_node(_focus_point_path)
 
 var is_focused setget , get_is_focused
 
