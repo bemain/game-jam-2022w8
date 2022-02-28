@@ -14,6 +14,11 @@ func get_is_focused():
 	return Gamestate.focused_object == object_name
 
 
+func _ready():
+	assert(focus_point != null, "No Focus Point found, please check Focus Point Path!")
+	assert(focus_zoom > 0, "Focus zoom cannot be negative or zero!")
+
+
 func _on_Focusable_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \

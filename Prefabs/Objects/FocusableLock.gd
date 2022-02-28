@@ -1,10 +1,13 @@
 extends Unlockable
 
 
-export(NodePath) var lock_focus_path = @"LockFocus"
+export(NodePath) var _lock_focus_path = @"LockFocus"
 
-onready var lock_focus = get_node(lock_focus_path)
+onready var lock_focus = get_node(_lock_focus_path)
 
+
+func _ready():
+	assert(lock_focus != null, "No Focusable found, please check Lock Focus Path!")
 
 # Override Unlockable's input to add extra focus check
 func _on_Unlockable_input_event(viewport, event, shape_idx):

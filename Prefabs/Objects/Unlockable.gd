@@ -8,6 +8,10 @@ export(String) var key = ""
 var is_locked = true
 
 
+func _ready():
+	assert(key != "", "No key set, Object can't be opened!")
+
+
 func _on_Unlockable_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \

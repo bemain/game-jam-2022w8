@@ -4,10 +4,9 @@ signal selected_wall_changed
 
 export(float) var focus_speed = 0.2
 
-var selected_wall: int = 0 setget set_selected_wall
-
 onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
-var _target_pos
+
+var selected_wall: int = 0 setget set_selected_wall
 
 func set_selected_wall(value):
 	selected_wall = fposmod(value, 4)
@@ -22,7 +21,6 @@ func _input(event):
 			self.selected_wall -= 1
 	if event.is_action_pressed("ui_down"):
 		Gamestate.focused_object = null
-
 
 func _process(delta):
 	var target_offset = Vector2.ZERO
