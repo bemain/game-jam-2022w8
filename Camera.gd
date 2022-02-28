@@ -1,5 +1,6 @@
 extends Camera2D
 
+signal selected_wall_changed
 
 export(float) var focus_speed = 0.2
 
@@ -8,10 +9,10 @@ var selected_wall: int = 0 setget set_selected_wall
 onready var animation_player = get_tree().root.get_node("World/AnimationPlayer")
 var _target_pos
 
-
 func set_selected_wall(value):
 	selected_wall = fposmod(value, 4)
 	animation_player.play("Fade")
+
 
 func _input(event):
 	if not Gamestate.focused_object:  # Block movement if focused
@@ -36,4 +37,5 @@ func _process(delta):
 
 
 func on_wall_changed():
+	emit_signal("selected_wall_changed")
 	position = Vector2(selected_wall * Constants.wallsize.x, 0) + Constants.wallsize / 2  # Update position
