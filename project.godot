@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "GameObject",
+"class": "Focusable",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/Focusable.gd"
+}, {
+"base": "Node2D",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/GameObject.gd"
+}, {
+"base": "GameObject",
+"class": "Unlockable",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/Unlockable.gd"
+} ]
+_global_script_class_icons={
+"Focusable": "",
+"GameObject": "",
+"Unlockable": ""
+}
+
 [application]
 
 config/name="Game Jam 2022w8"
