@@ -65,7 +65,7 @@ position = Vector2( 0, -1 )
 shape = SubResource( 2 )
 
 [node name="Lock" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1, 0 )
+position = Vector2( -30, 21 )
 object_name = "Locker1_Lock"
 key = "Key1"
 
@@ -73,15 +73,12 @@ key = "Key1"
 object_name = "Locker1_LockFocus"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lock/LockFocus" index="0"]
-position = Vector2( -31, 21 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lock"]
-position = Vector2( -31, 21 )
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Lock"]
-position = Vector2( -31, 21 )
 frames = SubResource( 4 )
 animation = "Locked"
 

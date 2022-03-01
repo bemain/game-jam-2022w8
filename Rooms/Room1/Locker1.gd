@@ -31,7 +31,7 @@ func _on_shelf_input_event(viewport, event, shape_idx):
 
 func _on_opened():
 	$Sprite.visible = true
-	$Lock.position = Vector2(0, 400)  # Position Lock on the floor
+	$Lock.position = Vector2(0, 380)  # Position Lock on the floor
 	$Lock.rotation_degrees = 90
 	$Lock/AnimatedSprite.animation = "On floor"
 
