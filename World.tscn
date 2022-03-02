@@ -105,6 +105,7 @@ anims/Fade = SubResource( 1 )
 "anims/Toggle Inventory" = SubResource( 2 )
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Soundtrack"
 script = ExtResource( 6 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
