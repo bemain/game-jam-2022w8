@@ -1,0 +1,27 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://SoundEffectPlayer.gd" type="Script" id=1]
+[ext_resource path="res://Resources/SoundEffects/DrawerCloseSound.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Resources/SoundEffects/KeyPickUpSound.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Resources/SoundEffects/LockerCloseSound.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Resources/SoundEffects/CardPickUp.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Resources/SoundEffects/ScissorCut.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Resources/SoundEffects/DrawerOpenSound.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Resources/SoundEffects/LockerOpenSound.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Resources/SoundEffects/LockSound.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Resources/SoundEffects/ScissorPickUp.mp3" type="AudioStream" id=10]
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer2D"]
+bus = "Effects"
+script = ExtResource( 1 )
+sounds = {
+"CardPickUp": ExtResource( 5 ),
+"DrawerCloseSound": ExtResource( 2 ),
+"DrawerOpenSound": ExtResource( 7 ),
+"KeyPickUpSound": ExtResource( 3 ),
+"LockSound": ExtResource( 9 ),
+"LockerCloseSound": ExtResource( 4 ),
+"LockerOpenSound": ExtResource( 8 ),
+"ScissorCut": ExtResource( 6 ),
+"ScissorPickUp": ExtResource( 10 )
+}

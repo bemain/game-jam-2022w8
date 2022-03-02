@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
+[ext_resource path="res://Resources/SoundEffects/DrawerCloseSound.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Rooms/Room1/Locker1.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Images/Locker1_open.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Images/Lock_unlocked.png" type="Texture" id=4]
@@ -7,6 +8,15 @@
 [ext_resource path="res://Resources/Images/Lock_closed.png" type="Texture" id=6]
 [ext_resource path="res://Prefabs/Objects/Focusable.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/Objects/FocusableLock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resources/SoundEffects/ScissorCut.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Resources/SoundEffects/LockSound.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Resources/SoundEffects/KeyPickUpSound.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Resources/SoundEffects/CardPickUp.mp3" type="AudioStream" id=12]
+[ext_resource path="res://Resources/SoundEffects/ScissorPickUp.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Resources/SoundEffects/DrawerOpenSound.mp3" type="AudioStream" id=14]
+[ext_resource path="res://Resources/SoundEffects/LockerOpenSound.mp3" type="AudioStream" id=15]
+[ext_resource path="res://SoundEffectPlayer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Resources/SoundEffects/LockerCloseSound.mp3" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 120 )
@@ -22,9 +32,9 @@ extents = Vector2( 64, 64 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "On floor",
+"name": "Locked",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -32,9 +42,9 @@ animations = [ {
 "name": "Unlocked",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Locked",
+"name": "On floor",
 "speed": 5.0
 } ]
 
@@ -46,6 +56,19 @@ object_name = "Locker1"
 visible = false
 position = Vector2( 84, -28 )
 texture = ExtResource( 3 )
+
+[node name="SoundEffectPlayer" parent="." instance=ExtResource( 16 )]
+sounds = {
+"CardPickUp": ExtResource( 12 ),
+"DrawerCloseSound": ExtResource( 1 ),
+"DrawerOpenSound": ExtResource( 14 ),
+"KeyPickUpSound": ExtResource( 11 ),
+"LockSound": ExtResource( 10 ),
+"LockerCloseSound": ExtResource( 17 ),
+"LockerOpenSound": ExtResource( 15 ),
+"ScissorCut": ExtResource( 9 ),
+"ScissorPickUp": ExtResource( 13 )
+}
 
 [node name="TopShelf" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -253 )
