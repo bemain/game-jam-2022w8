@@ -16,6 +16,8 @@ func _on_Lock_unlocked():
 	$TopShelf.visible = true  # Enable shelves
 	$BottomShelf.visible = true
 	$Lock/LockFocus.visible = false  # Disable lock focus
+	
+	$SoundEffectPlayer.play_effect("LockSound")  # Play sound effect
 
 
 func _on_shelf_input_event(viewport, event, shape_idx):
@@ -34,4 +36,6 @@ func _on_opened():
 	$Lock.position = Vector2(0, 380)  # Position Lock on the floor
 	$Lock.rotation_degrees = 90
 	$Lock/AnimatedSprite.animation = "On floor"
+	
+	$SoundEffectPlayer.play_effect("LockerOpenSound")  # Play sound effect
 
