@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Rooms/Room_Test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rooms/Room1/Room1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Images/Inventory.png" type="Texture" id=3]
 [ext_resource path="res://Inventory.gd" type="Script" id=4]
+[ext_resource path="res://Resources/Images/Inventory_active.png" type="Texture" id=5]
 [ext_resource path="res://BackgroundMusicPlayer.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -23,7 +24,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("Camera")
+tracks/1/path = NodePath("ViewportContainer/Viewport/Camera")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,7 +42,7 @@ tracks/1/keys = {
 resource_name = "Toggle Inventory"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Camera/Inventory:margin_left")
+tracks/0/path = NodePath("Inventory:margin_right")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -50,10 +51,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1.93187, 1 ),
 "update": 0,
-"values": [ 720.0, 1020 ]
+"values": [ 960, 1200 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Camera/Inventory:margin_right")
+tracks/1/path = NodePath("Inventory:margin_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -62,96 +63,40 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1.93187, 1 ),
 "update": 0,
-"values": [ 920.0, 1220 ]
+"values": [ 840, 1080 ]
 }
+
+[sub_resource type="InputEventKey" id=3]
+scancode = 49
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventKey" id=5]
+scancode = 50
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventKey" id=7]
+scancode = 51
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventKey" id=9]
+scancode = 52
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
+[sub_resource type="InputEventKey" id=11]
+scancode = 53
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
 
 [node name="World" type="Node2D"]
-
-[node name="Room_Test" parent="." instance=ExtResource( 1 )]
-
-[node name="Camera" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 2, 2 )
-script = ExtResource( 2 )
-
-[node name="Inventory" type="Control" parent="Camera"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 720.0
-margin_top = -500.0
-margin_right = 920.0
-margin_bottom = 500.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inv1" type="TextureRect" parent="Camera/Inventory"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -80.0
-margin_top = 30.0
-margin_right = 80.0
-margin_bottom = 190.0
-texture = ExtResource( 3 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inv2" type="TextureRect" parent="Camera/Inventory"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -80.0
-margin_top = 230.0
-margin_right = 80.0
-margin_bottom = 390.0
-texture = ExtResource( 3 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inv3" type="TextureRect" parent="Camera/Inventory"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -80.0
-margin_top = 430.0
-margin_right = 80.0
-margin_bottom = 590.0
-texture = ExtResource( 3 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inv4" type="TextureRect" parent="Camera/Inventory"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -80.0
-margin_top = 630.0
-margin_right = 80.0
-margin_bottom = 770.0
-texture = ExtResource( 3 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inv5" type="TextureRect" parent="Camera/Inventory"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -80.0
-margin_top = 830.0
-margin_right = 80.0
-margin_bottom = 970.0
-texture = ExtResource( 3 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -161,3 +106,166 @@ anims/Fade = SubResource( 1 )
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 6 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1920, 1080 )
+size_override_stretch = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+physics_object_picking = true
+
+[node name="Camera" type="Camera2D" parent="ViewportContainer/Viewport"]
+position = Vector2( 960, 540 )
+current = true
+script = ExtResource( 2 )
+
+[node name="Room1" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
+
+[node name="Inventory" type="Control" parent="."]
+margin_left = 840.0
+margin_right = 960.0
+margin_bottom = 540.0
+script = ExtResource( 4 )
+
+[node name="Inv1" type="TextureButton" parent="Inventory"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 105.0
+margin_bottom = 105.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource( 4 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Item1" type="TextureRect" parent="Inventory/Inv1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+
+[node name="Inv2" type="TextureButton" parent="Inventory"]
+margin_left = 15.0
+margin_top = 120.0
+margin_right = 105.0
+margin_bottom = 210.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource( 6 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Item2" type="TextureRect" parent="Inventory/Inv2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+
+[node name="Inv3" type="TextureButton" parent="Inventory"]
+margin_left = 15.0
+margin_top = 225.0
+margin_right = 105.0
+margin_bottom = 315.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource( 8 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Item3" type="TextureRect" parent="Inventory/Inv3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+
+[node name="Inv4" type="TextureButton" parent="Inventory"]
+margin_left = 15.0
+margin_top = 330.0
+margin_right = 105.0
+margin_bottom = 420.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource( 10 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Item4" type="TextureRect" parent="Inventory/Inv4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+
+[node name="Inv5" type="TextureButton" parent="Inventory"]
+margin_left = 15.0
+margin_top = 435.0
+margin_right = 105.0
+margin_bottom = 525.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource( 12 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Item5" type="TextureRect" parent="Inventory/Inv5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+
+[connection signal="toggled" from="Inventory/Inv1" to="Inventory" method="_toggle_select" binds= [ 1 ]]
+[connection signal="toggled" from="Inventory/Inv2" to="Inventory" method="_toggle_select" binds= [ 2 ]]
+[connection signal="toggled" from="Inventory/Inv3" to="Inventory" method="_toggle_select" binds= [ 3 ]]
+[connection signal="toggled" from="Inventory/Inv4" to="Inventory" method="_toggle_select" binds= [ 4 ]]
+[connection signal="toggled" from="Inventory/Inv5" to="Inventory" method="_toggle_select" binds= [ 5 ]]
