@@ -1,18 +1,23 @@
-extends Node2D
+extends Area2D
+tool
 
-export(String) var item_name = "GrabableItem_TEST"
+
+export(Resource) var item
 
 
 func _ready():
-	# Register item
-	assert(not item_name in Gamestate.items, "ERROR: Duplicate, item already exists: " + item_name)
-	Gamestate.items[item_name] = self
+	if Engine.editor_hint:
+		$Sprite.texture = item.texture
+		return
+	
+	assert(item, "No item has been set.")
+	item.register()
+	$Sprite.texture = item.texture
 
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
+func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
-		Gamestate.add_to_inventory(item_name)
-		Gamestate.selected_item = item_name
+		Gamestate.inventory_items.append(item.item_name)
 		queue_free()
