@@ -9,8 +9,9 @@ var is_open = false
 func _ready():
 	$Lock/AnimatedSprite.animation = "Locked"
 	$Sprite.visible = false
-	$TopShelf.visible = false
+	$TopShelf.visible = false  # Hide shelves
 	$BottomShelf.visible = false
+	$BottomShelf/Items.visible = false
 
 
 func _on_Lock_unlocked():
@@ -39,6 +40,8 @@ func _on_opened():
 	$Lock.position = Vector2(0, 380)  # Position Lock on the floor
 	$Lock.rotation_degrees = 90
 	$Lock/AnimatedSprite.animation = "On floor"
+	
+	$BottomShelf/Items.visible = true
 	
 	$SoundEffectPlayer.play_effect("LockerOpenSound")  # Play sound effect
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Resources/SoundEffects/DrawerCloseSound.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Rooms/Room1/Locker1.gd" type="Script" id=2]
@@ -17,12 +17,24 @@
 [ext_resource path="res://Resources/SoundEffects/LockerOpenSound.mp3" type="AudioStream" id=15]
 [ext_resource path="res://SoundEffectPlayer.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Resources/SoundEffects/LockerCloseSound.mp3" type="AudioStream" id=17]
+[ext_resource path="res://Prefabs/Items/Item.gd" type="Script" id=18]
+[ext_resource path="res://Prefabs/Items/GrabableItem.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Resources/Images/Crowbar1.png" type="Texture" id=20]
+[ext_resource path="res://Rooms/Room1/BottomShelf.gd" type="Script" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 120 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 250 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 18 )
+item_name = "Crowbar1"
+texture = ExtResource( 20 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 70, 128.571 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 80, 160 )
@@ -53,7 +65,6 @@ script = ExtResource( 2 )
 object_name = "Locker1"
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 84, -28 )
 texture = ExtResource( 3 )
 
@@ -80,12 +91,25 @@ shape = SubResource( 1 )
 
 [node name="BottomShelf" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 119 )
+script = ExtResource( 21 )
 object_name = "Locker1_BottomShelf"
 focus_zoom = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomShelf"]
 position = Vector2( 0, -1 )
 shape = SubResource( 2 )
+
+[node name="Items" type="Node2D" parent="BottomShelf"]
+position = Vector2( 0, -119 )
+
+[node name="Crowbar1" parent="BottomShelf/Items" instance=ExtResource( 19 )]
+position = Vector2( -11, 255 )
+scale = Vector2( 0.7, 0.7 )
+item = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomShelf/Items/Crowbar1"]
+position = Vector2( 5.72205e-06, -24.2857 )
+shape = SubResource( 7 )
 
 [node name="Lock" parent="." instance=ExtResource( 8 )]
 position = Vector2( -30, 21 )
@@ -107,6 +131,7 @@ animation = "Locked"
 
 [connection signal="opened" from="." to="." method="_on_opened"]
 [connection signal="input_event" from="TopShelf" to="." method="_on_shelf_input_event"]
+[connection signal="focused" from="BottomShelf" to="BottomShelf" method="_on_focused"]
 [connection signal="input_event" from="BottomShelf" to="." method="_on_shelf_input_event"]
 [connection signal="unlocked" from="Lock" to="." method="_on_Lock_unlocked"]
 
