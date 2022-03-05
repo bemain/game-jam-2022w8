@@ -12,7 +12,7 @@ func _ready() -> void:
 	assert(key != "", "No key set, Object can't be opened!")
 
 
-func _on_Unlockable_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_Unlockable_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:

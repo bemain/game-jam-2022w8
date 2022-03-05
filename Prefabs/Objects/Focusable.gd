@@ -19,7 +19,7 @@ func _ready() -> void:
 	assert(focus_zoom > 0, "Focus zoom cannot be negative or zero!")
 
 
-func _on_Focusable_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_Focusable_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:

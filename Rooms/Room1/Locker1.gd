@@ -22,7 +22,7 @@ func _on_Lock_unlocked() -> void:
 	$SoundEffectPlayer.play_effect("LockSound")  # Play sound effect
 
 
-func _on_shelf_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_shelf_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:

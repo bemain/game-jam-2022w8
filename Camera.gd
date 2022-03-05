@@ -22,7 +22,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
 		Gamestate.focused_object = ""
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var target_offset := Vector2.ZERO
 	var target_zoom := Vector2(1, 1)
 	if Gamestate.focused_object:  # Focus on focused object, if any 
