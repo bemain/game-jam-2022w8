@@ -5,14 +5,14 @@ signal unlocked
 
 export(String) var key = ""
 
-var is_locked = true
+var is_locked: bool = true
 
 
-func _ready():
+func _ready() -> void:
 	assert(key != "", "No key set, Object can't be opened!")
 
 
-func _on_Unlockable_input_event(viewport, event, shape_idx):
+func _on_Unlockable_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:

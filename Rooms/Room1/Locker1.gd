@@ -3,10 +3,10 @@ extends GameObject
 
 signal opened
 
-var is_open = false
+var is_open: bool = false
 
 
-func _ready():
+func _ready() -> void:
 	$Lock/AnimatedSprite.animation = "Locked"
 	$Sprite.visible = false
 	$TopShelf.visible = false  # Hide shelves
@@ -14,7 +14,7 @@ func _ready():
 	$BottomShelf/Items.visible = false
 
 
-func _on_Lock_unlocked():
+func _on_Lock_unlocked() -> void:
 	$Lock/AnimatedSprite.animation = "Unlocked"
 	$TopShelf.visible = true  # Enable shelves
 	$BottomShelf.visible = true
@@ -23,7 +23,7 @@ func _on_Lock_unlocked():
 	$SoundEffectPlayer.play_effect("LockSound")  # Play sound effect
 
 
-func _on_shelf_input_event(viewport, event, shape_idx):
+func _on_shelf_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
@@ -35,7 +35,7 @@ func _on_shelf_input_event(viewport, event, shape_idx):
 		emit_signal("opened")
 
 
-func _on_opened():
+func _on_opened() -> void:
 	$Sprite.visible = true
 	$Lock.position = Vector2(0, 380)  # Position Lock on the floor
 	$Lock.rotation_degrees = 90

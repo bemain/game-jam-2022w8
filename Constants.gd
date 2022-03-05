@@ -1,5 +1,5 @@
 extends Node
 
 
-const wallsize = Vector2(1920, 1080)
-onready var screensize = get_viewport().size
+const wallsize := Vector2(1920, 1080)
+onready var screensize: Vector2 = get_viewport().size
