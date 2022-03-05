@@ -140,6 +140,9 @@ margin_left = 840.0
 margin_right = 960.0
 margin_bottom = 540.0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Inv1" type="TextureButton" parent="Inventory"]
 margin_left = 15.0
@@ -165,6 +168,9 @@ mouse_filter = 2
 mouse_default_cursor_shape = 2
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Inv2" type="TextureButton" parent="Inventory"]
 margin_left = 15.0
