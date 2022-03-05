@@ -3,14 +3,14 @@ extends Unlockable
 
 export(NodePath) var _lock_focus_path = @"LockFocus"
 
-onready var lock_focus = get_node(_lock_focus_path)
+onready var lock_focus: Focusable = get_node(_lock_focus_path)
 
 
-func _ready():
-	assert(lock_focus != null, "No Focusable found, please check Lock Focus Path!")
+func _ready() -> void:
+	assert(lock_focus, "No Focusable found, please check Lock Focus Path!")
 
 # Override Unlockable's input to add extra focus check
-func _on_Unlockable_input_event(viewport, event, shape_idx):
+func _on_Unlockable_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed:
