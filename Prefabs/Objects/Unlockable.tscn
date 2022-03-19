@@ -5,4 +5,4 @@
 [node name="Unlockable" type="Area2D"]
 script = ExtResource( 1 )
 
-[connection signal="input_event" from="." to="." method="_on_Unlockable_input_event"]
+[connection signal="clicked" from="." to="." method="_on_clicked"]

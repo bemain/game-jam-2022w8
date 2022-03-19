@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 
 [node name="FocusPoint" type="Position2D" parent="."]
 
-[connection signal="input_event" from="." to="." method="_on_Focusable_input_event"]
+[connection signal="clicked" from="." to="." method="_on_clicked"]

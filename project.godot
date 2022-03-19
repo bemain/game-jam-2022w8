@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "GameObject",
+"class": "Clickable",
+"language": "GDScript",
+"path": "res://Prefabs/Objects/Clickable.gd"
+}, {
+"base": "Clickable",
 "class": "Focusable",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/Focusable.gd"
@@ -19,12 +24,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Prefabs/Objects/GameObject.gd"
 }, {
-"base": "GameObject",
+"base": "Clickable",
 "class": "Unlockable",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/Unlockable.gd"
 } ]
 _global_script_class_icons={
+"Clickable": "",
 "Focusable": "",
 "GameObject": "",
 "Unlockable": ""

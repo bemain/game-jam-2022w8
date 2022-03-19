@@ -1,4 +1,4 @@
-extends GameObject
+extends Clickable
 class_name Focusable
 
 signal focused
@@ -19,10 +19,9 @@ func _ready() -> void:
 	assert(focus_zoom > 0, "Focus zoom cannot be negative or zero!")
 
 
-func _on_Focusable_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton \
-	and event.button_index == BUTTON_LEFT \
-	and event.pressed:
+
+
+func _on_clicked() -> void:
 		# If object already focused, do nothing
 		if self.is_focused:
 			return
@@ -30,4 +29,5 @@ func _on_Focusable_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 		yield(get_tree(),"idle_frame")  # Wait one frame before focusing to let input pass to children first
 										# Otherwise, subobjects can be clicked while this object is not focused
 		Gamestate.focused_object = object_name  # Focus on this object
+		propagate_call("set_disabled", [false])
 		emit_signal("focused")
