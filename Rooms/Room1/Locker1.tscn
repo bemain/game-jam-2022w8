@@ -32,6 +32,11 @@ extents = Vector2( 64, 64 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Unlocked",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Locked",
@@ -41,16 +46,10 @@ animations = [ {
 "loop": true,
 "name": "On floor",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Unlocked",
-"speed": 5.0
 } ]
 
 [node name="Locker1" type="Node2D"]
 script = ExtResource( 2 )
-object_name = "Locker1"
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false

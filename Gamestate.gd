@@ -10,7 +10,7 @@ export(int) var current_day = 0 setget set_current_day
 
 export(Dictionary) var items
 export(Array, String) var inventory_items
-export(String) var selected_item
+export(String) var selected_item = "Key1"
 
 export(Dictionary) var objects
 export(String) var focused_object setget set_focused_object

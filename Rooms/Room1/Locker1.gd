@@ -1,4 +1,4 @@
-extends GameObject
+extends Node2D
 
 
 signal opened

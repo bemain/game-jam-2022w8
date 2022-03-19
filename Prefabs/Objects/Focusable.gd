@@ -1,4 +1,4 @@
-extends Clickable
+extends GameObject
 class_name Focusable
 
 signal focused
