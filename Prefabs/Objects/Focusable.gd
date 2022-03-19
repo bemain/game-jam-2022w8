@@ -2,6 +2,7 @@ extends Clickable
 class_name Focusable
 
 signal focused
+signal defocused
 
 export(NodePath) var _focus_point_path = @"FocusPoint"
 export(float) var focus_zoom = 4.0
@@ -18,7 +19,8 @@ func _ready() -> void:
 	assert(focus_point != null, "No Focus Point found, please check Focus Point Path!")
 	assert(focus_zoom > 0, "Focus zoom cannot be negative or zero!")
 
-
+	# Listen for when focused object changes
+	Gamestate.connect("focused_object_changed", self, "_on_focused_object_changed")
 
 
 func _on_clicked() -> void:
@@ -31,3 +33,8 @@ func _on_clicked() -> void:
 		Gamestate.focused_object = object_name  # Focus on this object
 		propagate_call("set_disabled", [false])
 		emit_signal("focused")
+
+
+func _on_focused_object_changed(previous: String, current: String) -> void:
+	if previous == object_name and current != object_name:
+		emit_signal("defocused")
