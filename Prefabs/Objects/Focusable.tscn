@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Prefabs/Objects/Focusable.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Objects/Clickable.tscn" type="PackedScene" id=2]
 
-[node name="Focusable" type="Area2D"]
+[node name="Focusable" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
-[node name="FocusPoint" type="Position2D" parent="."]
+[node name="FocusPoint" type="Position2D" parent="." index="0"]
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]
