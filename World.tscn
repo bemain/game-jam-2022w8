@@ -67,31 +67,20 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Shader" id=15]
-code = "/*
-Shader from Godot Shaders - the free shader library.
-godotshaders.com/shader/pixelate
+code = "shader_type canvas_item;
 
-This shader is under CC0 license. Feel free to use, improve and 
-change this shader according to your needs and consider sharing 
-the modified result to godotshaders.com.
-*/
-
-shader_type canvas_item;
-
-uniform int amount = 150;
+uniform float strength = 3;
 
 void fragment()
 {
-	vec2 grid_uv = round(UV * float(amount)) / float(amount);
-	
-	vec4 text = texture(TEXTURE, grid_uv);
-	
-	COLOR = text;
+	COLOR = texture(TEXTURE, UV);
+	COLOR *= 1.0 - (pow(UV.x-0.5, 2)*strength + pow(UV.y-0.5, 2)*strength);
+	COLOR.a = 1.0;
 }"
 
 [sub_resource type="ShaderMaterial" id=16]
 shader = SubResource( 15 )
-shader_param/amount = 150
+shader_param/strength = 3.0
 
 [sub_resource type="InputEventKey" id=3]
 scancode = 49
