@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Rooms/Room1/Room1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
@@ -66,6 +66,33 @@ tracks/1/keys = {
 "values": [ 840, 1080 ]
 }
 
+[sub_resource type="Shader" id=15]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/pixelate
+
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result to godotshaders.com.
+*/
+
+shader_type canvas_item;
+
+uniform int amount = 150;
+
+void fragment()
+{
+	vec2 grid_uv = round(UV * float(amount)) / float(amount);
+	
+	vec4 text = texture(TEXTURE, grid_uv);
+	
+	COLOR = text;
+}"
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = SubResource( 15 )
+shader_param/amount = 150
+
 [sub_resource type="InputEventKey" id=3]
 scancode = 49
 
@@ -109,6 +136,7 @@ bus = "Soundtrack"
 script = ExtResource( 6 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
+material = SubResource( 16 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_scale = Vector2( 0.5, 0.5 )
