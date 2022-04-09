@@ -71,12 +71,19 @@ code = "shader_type canvas_item;
 
 uniform float strength = 3;
 
+vec4 vignette(vec4 color, vec2 uv) {
+	color *= 1.0 - (pow(uv.x-0.5, 2)*strength + pow(uv.y-0.5, 2)*strength);
+	color.a = 1.0;
+	return color;
+}
+
 void fragment()
 {
 	COLOR = texture(TEXTURE, UV);
-	COLOR *= 1.0 - (pow(UV.x-0.5, 2)*strength + pow(UV.y-0.5, 2)*strength);
-	COLOR.a = 1.0;
-}"
+	COLOR = vignette(COLOR, UV);
+}
+
+"
 
 [sub_resource type="ShaderMaterial" id=16]
 shader = SubResource( 15 )
