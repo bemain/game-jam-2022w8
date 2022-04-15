@@ -18,9 +18,9 @@
 [ext_resource path="res://SoundEffectPlayer.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Resources/SoundEffects/LockerCloseSound.mp3" type="AudioStream" id=17]
 [ext_resource path="res://Prefabs/Items/Item.gd" type="Script" id=18]
-[ext_resource path="res://Prefabs/Items/GrabableItem.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Prefabs/Objects/GrabableItem.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Resources/Images/Crowbar1.png" type="Texture" id=20]
-[ext_resource path="res://Rooms/Room1/BottomShelf.gd" type="Script" id=21]
+[ext_resource path="res://Prefabs/Objects/Focusable.gd" type="Script" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 120 )
@@ -28,7 +28,7 @@ extents = Vector2( 64, 120 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 250 )
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 18 )
 item_name = "Crowbar1"
 texture = ExtResource( 20 )
@@ -99,16 +99,18 @@ position = Vector2( 0, -1 )
 shape = SubResource( 2 )
 
 [node name="Items" type="Node2D" parent="BottomShelf"]
-position = Vector2( 0, -119 )
 
 [node name="Crowbar1" parent="BottomShelf/Items" instance=ExtResource( 19 )]
-position = Vector2( -11, 255 )
-scale = Vector2( 0.7, 0.7 )
-object_name = "Locker1_GrabableCrowbar1"
-item = SubResource( 6 )
+position = Vector2( -4, 119 )
+object_name = "Locker1_Crowbar1"
+item = SubResource( 8 )
+
+[node name="Sprite" parent="BottomShelf/Items/Crowbar1" index="0"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomShelf/Items/Crowbar1"]
-position = Vector2( 5.72205e-06, -24.2857 )
+scale = Vector2( 0.7, 0.7 )
 shape = SubResource( 7 )
 
 [node name="LockFocus" parent="." instance=ExtResource( 7 )]
@@ -133,6 +135,7 @@ animation = "Locked"
 
 [connection signal="opened" from="." to="." method="_on_opened"]
 [connection signal="input_event" from="TopShelf" to="." method="_on_shelf_input_event"]
-[connection signal="focused" from="BottomShelf" to="BottomShelf" method="_on_focused"]
 [connection signal="input_event" from="BottomShelf" to="." method="_on_shelf_input_event"]
 [connection signal="unlocked" from="LockFocus/Lock" to="." method="_on_Lock_unlocked"]
+
+[editable path="BottomShelf/Items/Crowbar1"]

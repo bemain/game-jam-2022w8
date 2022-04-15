@@ -15,9 +15,6 @@ func _ready():
 	$Sprite.texture = item.texture
 
 
-func _on_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton \
-	and event.button_index == BUTTON_LEFT \
-	and event.pressed:
-		Gamestate.inventory_items.append(item.item_name)
-		queue_free()
+func _on_GrabableItem_clicked():
+	Gamestate.inventory_items.append(item.item_name)
+	queue_free()
