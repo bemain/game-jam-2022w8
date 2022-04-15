@@ -7,7 +7,7 @@
 [ext_resource path="res://Resources/Images/Lock_on_floor.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Images/Lock_closed.png" type="Texture" id=6]
 [ext_resource path="res://Prefabs/Objects/Focusable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Prefabs/Objects/FocusableLock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Objects/Unlockable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Resources/SoundEffects/ScissorCut.mp3" type="AudioStream" id=9]
 [ext_resource path="res://Resources/SoundEffects/LockSound.mp3" type="AudioStream" id=10]
 [ext_resource path="res://Resources/SoundEffects/KeyPickUpSound.mp3" type="AudioStream" id=11]
@@ -44,14 +44,14 @@ extents = Vector2( 64, 64 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "Locked",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Unlocked",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Locked",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -62,7 +62,6 @@ animations = [ {
 
 [node name="Locker1" type="Node2D"]
 script = ExtResource( 2 )
-object_name = "Locker1"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 84, -28 )
@@ -112,21 +111,23 @@ item = SubResource( 6 )
 position = Vector2( 5.72205e-06, -24.2857 )
 shape = SubResource( 7 )
 
-[node name="Lock" parent="." instance=ExtResource( 8 )]
+[node name="LockFocus" parent="." instance=ExtResource( 7 )]
+object_name = "Locker1_LockFocus"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LockFocus"]
 position = Vector2( -30, 21 )
+shape = SubResource( 5 )
+
+[node name="Lock" parent="LockFocus" instance=ExtResource( 8 )]
 object_name = "Locker1_Lock"
 key = "Key1"
 
-[node name="LockFocus" parent="Lock" index="0"]
-object_name = "Locker1_LockFocus"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lock/LockFocus" index="0"]
-shape = SubResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lock"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LockFocus/Lock"]
+position = Vector2( -30, 21 )
 shape = SubResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Lock"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LockFocus/Lock"]
+position = Vector2( -30, 21 )
 frames = SubResource( 4 )
 animation = "Locked"
 
@@ -134,6 +135,4 @@ animation = "Locked"
 [connection signal="input_event" from="TopShelf" to="." method="_on_shelf_input_event"]
 [connection signal="focused" from="BottomShelf" to="BottomShelf" method="_on_focused"]
 [connection signal="input_event" from="BottomShelf" to="." method="_on_shelf_input_event"]
-[connection signal="unlocked" from="Lock" to="." method="_on_Lock_unlocked"]
-
-[editable path="Lock"]
+[connection signal="unlocked" from="LockFocus/Lock" to="." method="_on_Lock_unlocked"]

@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Prefabs/Objects/Focusable.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "GameObject",
 "language": "GDScript",
 "path": "res://Prefabs/Objects/GameObject.gd"
